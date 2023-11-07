@@ -1,6 +1,7 @@
 // we can see existing variables.
 // note that template and Rhai variables are separate!
 let chip = variable::get("chip").to_lower();
+let chip_arg_len = chip.len();
 let version_type = variable::get("version");
 
 let has_rtic_feature = false;
@@ -11,7 +12,7 @@ let ccram_address = "0x10000000";
 let itcm_address = "0x00000000";
 let dtcm_address = 0x20000000;
 let flash_address = "0x08000000";
-let flash_lit = chip[10];
+let flash_lit = chip.chars().nth(chip_arg_len - 1);
 let flash = switch flash_lit.to_upper() {
     '3' => 8,
     '4' => 16,
